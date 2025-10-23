@@ -84,6 +84,9 @@ const Index = () => {
 
       <section id="home" className="relative py-20 md:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-orange-50/50 to-white"></div>
+        <div className="absolute top-20 left-10 w-64 h-64 bg-orange-200/30 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+        <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-orange-300/20 rounded-full blur-2xl"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 animate-fade-in">
@@ -123,18 +126,35 @@ const Index = () => {
             </div>
             <div className="relative animate-scale-in hidden md:block">
               <div className="absolute -top-4 -right-4 w-72 h-72 bg-primary/20 rounded-full blur-3xl"></div>
-              <img 
-                src="https://cdn.poehali.dev/projects/548e317b-c3f3-45a8-a3b8-fe823f15a11e/files/354b393d-bd2c-45ac-b7bf-c6b5256d7aa9.jpg" 
-                alt="Visa Services"
-                className="relative rounded-3xl shadow-2xl w-full h-auto object-cover"
-              />
+              <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-orange-400/30 rounded-full blur-2xl"></div>
+              <div className="relative">
+                <div className="absolute -top-3 -left-3 w-full h-full border-4 border-primary/20 rounded-3xl"></div>
+                <img 
+                  src="https://cdn.poehali.dev/projects/548e317b-c3f3-45a8-a3b8-fe823f15a11e/files/354b393d-bd2c-45ac-b7bf-c6b5256d7aa9.jpg" 
+                  alt="Visa Services"
+                  className="relative rounded-3xl shadow-2xl w-full h-auto object-cover"
+                />
+                <div className="absolute -bottom-8 -right-8 bg-white rounded-2xl shadow-xl p-6 border-2 border-primary/20">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                      <Icon name="CheckCircle" className="text-primary" size={24} />
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-primary">98%</div>
+                      <div className="text-sm text-muted-foreground">Успешных виз</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="services" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section id="services" className="py-20 bg-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-orange-100/50 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-primary/10 to-transparent rounded-full blur-2xl"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <Badge className="mb-4">Услуги</Badge>
             <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">Что мы предлагаем</h2>
@@ -144,14 +164,15 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, idx) => (
-              <Card key={idx} className="border-2 hover:border-primary hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                <CardHeader>
-                  <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-4">
-                    <Icon name={service.icon as any} className="text-primary" size={28} />
+              <Card key={idx} className="group border-2 hover:border-primary hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-gradient-to-br from-white to-orange-50/30 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-all"></div>
+                <CardHeader className="relative z-10">
+                  <div className="w-14 h-14 bg-gradient-to-br from-primary to-orange-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                    <Icon name={service.icon as any} className="text-white" size={28} />
                   </div>
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
+                  <CardTitle className="text-xl group-hover:text-primary transition-colors">{service.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="relative z-10">
                   <CardDescription className="text-base">{service.description}</CardDescription>
                 </CardContent>
               </Card>
@@ -160,8 +181,13 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="countries" className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto px-4">
+      <section id="countries" className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-20 left-10 text-9xl">✈️</div>
+          <div className="absolute bottom-40 right-20 text-8xl">🌍</div>
+          <div className="absolute top-1/2 right-1/4 text-7xl">🎫</div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <Badge className="mb-4">Направления</Badge>
             <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">Популярные страны</h2>
@@ -171,7 +197,8 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {countries.map((country, idx) => (
-              <Card key={idx} className="relative overflow-hidden border-2 hover:border-primary transition-all duration-300 hover:shadow-xl group">
+              <Card key={idx} className="relative overflow-hidden border-2 hover:border-primary transition-all duration-300 hover:shadow-2xl group hover:-translate-y-2 bg-white">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-orange-100/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 {country.popular && (
                   <div className="absolute top-4 right-4 z-10">
                     <Badge className="bg-primary text-white">Популярно</Badge>
@@ -199,8 +226,12 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="prices" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section id="prices" className="py-20 bg-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-10 w-80 h-80 bg-orange-100/50 rounded-full blur-3xl"></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <Badge className="mb-4">Прайс-лист</Badge>
             <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">Стоимость услуг</h2>
@@ -209,7 +240,8 @@ const Index = () => {
             </p>
           </div>
           <div className="max-w-4xl mx-auto">
-            <Card className="border-2">
+            <Card className="border-2 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden relative">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-orange-400 to-primary"></div>
               <CardContent className="p-0">
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -223,7 +255,7 @@ const Index = () => {
                     </thead>
                     <tbody>
                       {prices.map((row, idx) => (
-                        <tr key={idx} className="border-b hover:bg-muted/50 transition-colors">
+                        <tr key={idx} className="border-b hover:bg-gradient-to-r hover:from-primary/5 hover:to-orange-50/50 transition-all duration-200">
                           <td className="p-4 font-semibold">{row.country}</td>
                           <td className="text-center p-4 text-primary font-bold">{row.tourist}</td>
                           <td className="text-center p-4 text-primary font-bold">{row.business}</td>
@@ -242,17 +274,21 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="about" className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto px-4">
+      <section id="about" className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-20 right-20 w-72 h-72 bg-orange-200/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <Badge className="mb-4">О компании</Badge>
               <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">Почему мы?</h2>
             </div>
             <div className="grid md:grid-cols-2 gap-8">
-              <Card className="border-2">
+              <Card className="border-2 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group bg-gradient-to-br from-white to-primary/5">
                 <CardHeader>
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary/10 to-orange-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Icon name="Award" className="text-primary" size={24} />
                   </div>
                   <CardTitle>Опыт с 2015 года</CardTitle>
@@ -263,9 +299,9 @@ const Index = () => {
                   </CardDescription>
                 </CardContent>
               </Card>
-              <Card className="border-2">
+              <Card className="border-2 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group bg-gradient-to-br from-white to-orange-50/30">
                 <CardHeader>
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary/10 to-orange-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Icon name="Users" className="text-primary" size={24} />
                   </div>
                   <CardTitle>Персональный подход</CardTitle>
@@ -276,9 +312,9 @@ const Index = () => {
                   </CardDescription>
                 </CardContent>
               </Card>
-              <Card className="border-2">
+              <Card className="border-2 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group bg-gradient-to-br from-white to-primary/5">
                 <CardHeader>
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary/10 to-orange-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Icon name="Clock" className="text-primary" size={24} />
                   </div>
                   <CardTitle>Быстрые сроки</CardTitle>
@@ -289,9 +325,9 @@ const Index = () => {
                   </CardDescription>
                 </CardContent>
               </Card>
-              <Card className="border-2">
+              <Card className="border-2 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group bg-gradient-to-br from-white to-orange-50/30">
                 <CardHeader>
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary/10 to-orange-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Icon name="ShieldCheck" className="text-primary" size={24} />
                   </div>
                   <CardTitle>Гарантия качества</CardTitle>
@@ -307,8 +343,13 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="reviews" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section id="reviews" className="py-20 bg-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-1/4 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+          <div className="absolute top-40 right-1/3 w-3 h-3 bg-orange-400 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+          <div className="absolute bottom-20 left-1/2 w-2 h-2 bg-primary rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <Badge className="mb-4">Отзывы</Badge>
             <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">Что говорят клиенты</h2>
@@ -318,7 +359,8 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {testimonials.map((review, idx) => (
-              <Card key={idx} className="border-2 hover:border-primary transition-all duration-300">
+              <Card key={idx} className="border-2 hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group bg-gradient-to-br from-white via-white to-orange-50/20 relative overflow-hidden">
+                <div className="absolute top-0 right-0 text-6xl opacity-10 group-hover:opacity-20 transition-opacity">💬</div>
                 <CardHeader>
                   <div className="flex items-center gap-2 mb-2">
                     {[...Array(review.rating)].map((_, i) => (
@@ -336,8 +378,10 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="faq" className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto px-4">
+      <section id="faq" className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+        <div className="absolute top-10 left-20 text-8xl opacity-5">❓</div>
+        <div className="absolute bottom-20 right-20 text-9xl opacity-5">💡</div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-16">
               <Badge className="mb-4">FAQ</Badge>
@@ -348,7 +392,7 @@ const Index = () => {
             </div>
             <Accordion type="single" collapsible className="space-y-4">
               {faqs.map((faq, idx) => (
-                <AccordionItem key={idx} value={`item-${idx}`} className="border-2 rounded-xl px-6 bg-white">
+                <AccordionItem key={idx} value={`item-${idx}`} className="border-2 rounded-xl px-6 bg-white hover:shadow-lg transition-all duration-300 hover:border-primary group">
                   <AccordionTrigger className="text-left font-semibold hover:text-primary transition-colors">
                     {faq.q}
                   </AccordionTrigger>
@@ -362,8 +406,12 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="contacts" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section id="contacts" className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-80 h-80 bg-orange-200/30 rounded-full blur-3xl"></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
               <Badge className="mb-4">Контакты</Badge>
@@ -373,7 +421,7 @@ const Index = () => {
               </p>
             </div>
             <div className="grid md:grid-cols-2 gap-8">
-              <Card className="border-2">
+              <Card className="border-2 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-primary/5">
                 <CardHeader>
                   <CardTitle>Контактная информация</CardTitle>
                 </CardHeader>
@@ -410,7 +458,7 @@ const Index = () => {
                   </div>
                 </CardContent>
               </Card>
-              <Card className="border-2">
+              <Card className="border-2 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-orange-50/30">
                 <CardHeader>
                   <CardTitle>Оставить заявку</CardTitle>
                   <CardDescription>Заполните форму и мы свяжемся с вами</CardDescription>
